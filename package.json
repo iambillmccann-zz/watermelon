@@ -1,7 +1,7 @@
 {
   "name": "rmuif",
   "version": "2.2.2",
-  "description": "Supercharged version of CRA with all the  bells and whistles",
+  "description": "Supercharged version of CRA with Material Design",
   "homepage": "https://demo.rmuif.com",
   "bugs": {
     "url": "https://github.com/phoqe/rmuif/issues",
@@ -26,11 +26,11 @@
     "prettier": "prettier --write '**/*.{js,jsx,ts,tsx,json,css,scss,md}'"
   },
   "config": {
-    "title": "RMUIF",
+    "title": "WATERMELON",
     "theme": {
       "primaryColor": "blue",
       "secondaryColor": "red",
-      "dark": false
+      "dark": true
     },
     "firebase": {
       "apiKey": "AIzaSyAm2MMDNXu1Xas0DJpiuk-KWRN02FMAtug",
