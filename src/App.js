@@ -8,6 +8,7 @@ import Container from "@material-ui/core/Container";
 
 // My stuff
 import appearance from "./services/appearance";
+import appHeader from "./components/appHeader";
 
 const initialState = {
   theme: appearance.defaultTheme
@@ -28,6 +29,7 @@ class App extends Component {
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
         <Container maxWidth="md">
+          <appHeader />
           <div>
             {greeting}
             {me}
