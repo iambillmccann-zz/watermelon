@@ -11,13 +11,13 @@ class AppHeader extends Component {
   render() {
     return (
       <AppBar color="primary" position="static">
-        <Box display="flex" flexGrow={1}>
-          <Toolbar>
+        <Toolbar>
+          <Box display="flex" flexGrow={1}>
             <Typography color="inherit" variant="h6">
               WATERMELON
             </Typography>
-          </Toolbar>
-        </Box>
+          </Box>
+        </Toolbar>
       </AppBar>
     );
   }

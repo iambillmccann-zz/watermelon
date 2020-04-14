@@ -5,32 +5,10 @@ import React, { Component } from "react";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
-import AppBar from "@material-ui/core/AppBar";
-import Box from "@material-ui/core/Box";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 
 // My stuff
 import appearance from "./services/appearance";
 import AppHeader from "./components/AppHeader";
-
-/*
-class AppHeader extends Component {
-  render() {
-    return (
-      <AppBar color="primary" position="static">
-        <Box display="flex" flexGrow={1}>
-          <Toolbar>
-            <Typography color="inherit" variant="h6">
-              WATERMELON
-            </Typography>
-          </Toolbar>
-        </Box>
-      </AppBar>
-    );
-  }
-}
-*/
 
 const initialState = {
   theme: appearance.defaultTheme
