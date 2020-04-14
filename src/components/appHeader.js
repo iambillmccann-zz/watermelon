@@ -7,7 +7,7 @@ import Box from "@material-ui/core/Box";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 
-class appHeader extends Component {
+class AppHeader extends Component {
   render() {
     return (
       <AppBar color="primary" position="static">
@@ -23,4 +23,4 @@ class appHeader extends Component {
   }
 }
 
-export default appHeader;
+export default AppHeader;

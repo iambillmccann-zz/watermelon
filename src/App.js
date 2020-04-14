@@ -12,7 +12,25 @@ import Typography from "@material-ui/core/Typography";
 
 // My stuff
 import appearance from "./services/appearance";
-// import appHeader from "./components/appHeader";
+import AppHeader from "./components/AppHeader";
+
+/*
+class AppHeader extends Component {
+  render() {
+    return (
+      <AppBar color="primary" position="static">
+        <Box display="flex" flexGrow={1}>
+          <Toolbar>
+            <Typography color="inherit" variant="h6">
+              WATERMELON
+            </Typography>
+          </Toolbar>
+        </Box>
+      </AppBar>
+    );
+  }
+}
+*/
 
 const initialState = {
   theme: appearance.defaultTheme
@@ -32,16 +50,8 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
+        <AppHeader />
         <Container maxWidth="md">
-          <AppBar color="primary" position="static">
-            <Box display="flex" flexGrow={1}>
-              <Toolbar>
-                <Typography color="inherit" variant="h6">
-                  WATERMELON
-                </Typography>
-              </Toolbar>
-            </Box>
-          </AppBar>{" "}
           <div>
             {greeting}
             {me}
