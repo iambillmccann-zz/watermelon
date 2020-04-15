@@ -9,6 +9,7 @@ import Container from "@material-ui/core/Container";
 // My stuff
 import appearance from "./services/appearance";
 import AppHeader from "./components/AppHeader";
+import Cards from "./components/Cards";
 
 const initialState = {
   theme: appearance.defaultTheme
@@ -34,6 +35,7 @@ class App extends Component {
             {greeting}
             {me}
           </div>
+          <Cards />
         </Container>
       </MuiThemeProvider>
     );
