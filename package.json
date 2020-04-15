@@ -40,7 +40,8 @@
       "storageBucket": "watermelon-2020q1.appspot.com",
       "messagingSenderId": "603107141702",
       "appId": "1:603107141702:web:dda7f8bff3f8c6f7b6c247",
-      "measurementId": "G-F6HPG5B8Q8"    },
+      "measurementId": "G-F6HPG5B8Q8"
+    },
     "sentry": {
       "dsn": "https://78536326e6524916b6f44b4ea510b7a4@sentry.io/1846624"
     }

@@ -3,6 +3,7 @@ import React, { Component } from "react";
 
 // Material Design
 import { MuiThemeProvider } from "@material-ui/core/styles";
+import Box from "@material-ui/core/Box";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 
@@ -23,19 +24,15 @@ class App extends Component {
 
   render() {
     const { theme } = this.state;
-    const greeting = "Good morning, ";
-    const me = "Bill";
 
     return (
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
         <AppHeader />
-        <Container maxWidth="md">
-          <div>
-            {greeting}
-            {me}
-          </div>
-          <Cards />
+        <Container maxWidth="xl">
+          <Box m={3}>
+            <Cards />
+          </Box>
         </Container>
       </MuiThemeProvider>
     );
