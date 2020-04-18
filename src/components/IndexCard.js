@@ -25,17 +25,16 @@ export default function IndexCard() {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={this.props.cardInfo.url}
+          image="/static/images/lizard.jpg"
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            {this.props.cardInfo.price}
+            $450,000
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {this.props.cardInfo.addressLine1}
-            <br />
-            {this.props.cardInfo.addressLine1}
+            9 Appletree Dr.
+            <br /> Matawan, NJ 07747
           </Typography>
         </CardContent>
       </CardActionArea>
