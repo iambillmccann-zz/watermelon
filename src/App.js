@@ -1,5 +1,6 @@
 // React imports
 import React, { Component } from "react";
+import { BrowserRouter } from "react-router-dom";
 
 // Material Design
 import { MuiThemeProvider } from "@material-ui/core/styles";
@@ -9,7 +10,7 @@ import Container from "@material-ui/core/Container";
 
 // My stuff
 import appearance from "./services/appearance";
-import AppHeader from "./components/AppHeader";
+import AppHeader from "./components/layout/AppHeader";
 import Cards from "./components/Cards";
 
 const initialState = {
@@ -26,15 +27,17 @@ class App extends Component {
     const { theme } = this.state;
 
     return (
-      <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        <AppHeader />
-        <Container maxWidth="xl">
-          <Box m={3}>
-            <Cards />
-          </Box>
-        </Container>
-      </MuiThemeProvider>
+      <BrowserRouter>
+        <MuiThemeProvider theme={theme}>
+          <CssBaseline />
+          <AppHeader />
+          <Container maxWidth="xl">
+            <Box m={3}>
+              <Cards />
+            </Box>
+          </Container>
+        </MuiThemeProvider>
+      </BrowserRouter>
     );
   }
 }
