@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 
 // My imports
-import Cards from "./Cards";
+import HomeList from "../houses/HomeList";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -71,7 +71,7 @@ const AppTabs = () => {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <Cards />
+        <HomeList />
       </TabPanel>
       <TabPanel value={value} index={1}>
         Comparable homes
