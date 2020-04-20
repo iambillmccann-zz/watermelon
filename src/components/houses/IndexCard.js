@@ -25,7 +25,7 @@ export default function IndexCard() {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="/static/images/lizard.jpg"
+          image="/static/images/house-placeholder-1.jpg"
           title="Contemplative Reptile"
         />
         <CardContent>
