@@ -9,6 +9,7 @@ import Container from "@material-ui/core/Container";
 // My imports
 import Dashboard from "./components/dashboard/Dashboard";
 import AppHeader from "./components/layout/AppHeader";
+import HomeDetail from "./components/houses/HomeDetail";
 
 class App extends Component {
   render() {
@@ -20,9 +21,9 @@ class App extends Component {
           <Container maxWidth="xl">
             <Box m={3}>
               <Switch>
-                <Route path="/" exact>
-                  <Dashboard />
-                </Route>
+                <Route path="/" exact component={Dashboard} />
+                <Route path="/dashboard" component={Dashboard} />
+                <Route path="/homes/:id" component={HomeDetail} />
               </Switch>
             </Box>
           </Container>
