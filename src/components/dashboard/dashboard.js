@@ -1,13 +1,11 @@
 // React imports
-import React, { Component } from "react";
+import React from "react";
 
 // My imports
 import AppTabs from "../layout/AppTabs";
 
-class Dashboard extends Component {
-  render() {
-    return <AppTabs />;
-  }
-}
+const Dashboard = () => {
+  return <AppTabs />;
+};
 
 export default Dashboard;
