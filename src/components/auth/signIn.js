@@ -9,10 +9,8 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    "& .MuiTextField-root": {
-      margin: theme.spacing(3)
-    }
+  margin: {
+    margin: theme.spacing(3)
   }
 }));
 
@@ -30,10 +28,11 @@ const SignIn = () => {
 
   return (
     <Container maxWidth="sm">
-      <form onSubmit={handleSubmit} className={classes.root}>
-        <h3>Sign In</h3>
+      <form onSubmit={handleSubmit}>
+        <h1 className={classes.margin}>Sign In</h1>
         <TextField
           id="userId"
+          className={classes.margin}
           autoComplete="email"
           //disabled={performingAction}
           //error={!!(errors && errors.emailAddress)}
@@ -50,6 +49,7 @@ const SignIn = () => {
           onChange={handleChange}
         />
         <TextField
+          className={classes.margin}
           autoComplete="current-password"
           //disabled={performingAction}
           //error={!!(errors && errors.password)}
@@ -63,7 +63,12 @@ const SignIn = () => {
           //variant="outlined"
           onChange={handleChange}
         />
-        <Button variant="contained" color="primary" disableElevation>
+        <Button
+          variant="contained"
+          color="primary"
+          disableElevation
+          className={classes.margin}
+        >
           Sign In
         </Button>
       </form>

@@ -16,22 +16,22 @@ const App = () => {
   const theme = useTheme();
 
   return (
-    <BrowserRouter>
-      <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        <AppHeader />
-        <Container maxWidth="xl">
-          <Box m={3}>
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline />
+      <AppHeader />
+      <Container maxWidth="xl">
+        <Box m={3}>
+          <BrowserRouter>
             <Switch>
               <Route path="/" exact component={Dashboard} />
               <Route path="/dashboard" component={Dashboard} />
               <Route path="/homes/:id" component={HomeDetail} />
               <Route path="/signin" component={SignIn} />
             </Switch>
-          </Box>
-        </Container>
-      </MuiThemeProvider>
-    </BrowserRouter>
+          </BrowserRouter>
+        </Box>
+      </Container>
+    </MuiThemeProvider>
   );
 };
 
