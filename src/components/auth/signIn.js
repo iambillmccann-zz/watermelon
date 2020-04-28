@@ -21,7 +21,7 @@ const SignIn = () => {
     e.preventDefault();
   };
   const handleChange = e => {
-    if (e.event.id === "userId") setEmail(e.event.value);
+    if (e.event.id === "userid") setEmail(e.event.value);
     else setPassword(e.event.value);
   };
   const classes = useStyles();
@@ -31,7 +31,7 @@ const SignIn = () => {
       <form onSubmit={handleSubmit}>
         <h1 className={classes.margin}>Sign In</h1>
         <TextField
-          id="userId"
+          id="userid"
           className={classes.margin}
           autoComplete="email"
           //disabled={performingAction}
@@ -45,7 +45,7 @@ const SignIn = () => {
           required
           type="email"
           value={email}
-          //variant="outlined"
+          variant="outlined"
           onChange={handleChange}
         />
         <TextField
@@ -60,7 +60,7 @@ const SignIn = () => {
           required
           type="password"
           value={password}
-          //variant="outlined"
+          variant="outlined"
           onChange={handleChange}
         />
         <Button

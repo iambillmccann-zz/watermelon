@@ -11,6 +11,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import AppHeader from "./components/layout/AppHeader";
 import HomeDetail from "./components/houses/HomeDetail";
 import SignIn from "./components/auth/SignIn";
+import SignUp from "./components/auth/SignUp";
 
 const App = () => {
   const theme = useTheme();
@@ -27,6 +28,7 @@ const App = () => {
               <Route path="/dashboard" component={Dashboard} />
               <Route path="/homes/:id" component={HomeDetail} />
               <Route path="/signin" component={SignIn} />
+              <Route path="/signup" component={SignUp} />
             </Switch>
           </BrowserRouter>
         </Box>
