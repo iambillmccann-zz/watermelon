@@ -1,45 +1,40 @@
 // React imports
-import React, { Component } from "react";
-import { BrowserRouter } from "react-router-dom";
-
-// Material Design
-import { MuiThemeProvider } from "@material-ui/core/styles";
-import Box from "@material-ui/core/Box";
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { MuiThemeProvider, useTheme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 
-// My stuff
-import appearance from "./services/appearance";
+// My imports
+import Dashboard from "./components/dashboard/Dashboard";
 import AppHeader from "./components/layout/AppHeader";
-import Cards from "./components/Cards";
+import HomeDetail from "./components/houses/HomeDetail";
+import SignIn from "./components/auth/SignIn";
+import SignUp from "./components/auth/SignUp";
 
-const initialState = {
-  theme: appearance.defaultTheme
+const App = () => {
+  const theme = useTheme();
+
+  return (
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline />
+      <AppHeader />
+      <Container maxWidth="xl">
+        <Box m={3}>
+          <BrowserRouter>
+            <Switch>
+              <Route path="/" exact component={Dashboard} />
+              <Route path="/dashboard" component={Dashboard} />
+              <Route path="/homes/:id" component={HomeDetail} />
+              <Route path="/signin" component={SignIn} />
+              <Route path="/signup" component={SignUp} />
+            </Switch>
+          </BrowserRouter>
+        </Box>
+      </Container>
+    </MuiThemeProvider>
+  );
 };
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = initialState;
-  }
-
-  render() {
-    const { theme } = this.state;
-
-    return (
-      <BrowserRouter>
-        <MuiThemeProvider theme={theme}>
-          <CssBaseline />
-          <AppHeader />
-          <Container maxWidth="xl">
-            <Box m={3}>
-              <Cards />
-            </Box>
-          </Container>
-        </MuiThemeProvider>
-      </BrowserRouter>
-    );
-  }
-}
 
 export default App;
