@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 const HousePanel = props => {
   const classes = useStyles();
   const sectionTitle = props.title;
-  const id = props.id;
+  // const id = props.id;
 
   return (
     <ExpansionPanel>
@@ -27,9 +27,7 @@ const HousePanel = props => {
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography className={classes.heading}>
-          {sectionTitle} {id}
-        </Typography>
+        <Typography className={classes.heading}>{sectionTitle}</Typography>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
         <Typography>{props.children}</Typography>
