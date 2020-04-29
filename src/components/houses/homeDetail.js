@@ -9,6 +9,9 @@ import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
+// My imports
+import HousePanel from "./HousePanel";
+
 const useStyles = makeStyles({
   root: {
     width: "100%"
@@ -21,6 +24,9 @@ const HomeDetails = props => {
 
   return (
     <div className={classes.root}>
+      <HousePanel id={id} title="Address and Location">
+        <p>This is a test</p>
+      </HousePanel>
       <ExpansionPanel>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
