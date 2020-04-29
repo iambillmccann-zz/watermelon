@@ -6,8 +6,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import Checkbox from "@material-ui/core/Checkbox";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
@@ -26,231 +24,142 @@ const HomeDetails = props => {
       <ExpansionPanel>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
-          aria-label="Expand"
-          aria-controls="additional-actions1-content"
-          id="additional-actions1-header"
+          aria-controls="panel1a-content"
+          id="panel1a-header"
         >
-          <FormControlLabel
-            aria-label="Acknowledge"
-            onClick={event => event.stopPropagation()}
-            onFocus={event => event.stopPropagation()}
-            control={<Checkbox />}
-            label={"Property for " + id}
-          />
+          <Typography className={classes.heading}>
+            Property Description
+          </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography color="textSecondary">
-            The click event of the nested action will propagate up and expand
-            the panel unless you explicitly stop it.
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget {id}.
           </Typography>
         </ExpansionPanelDetails>
-      </ExpansionPanel>
+      </ExpansionPanel>{" "}
       <ExpansionPanel>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
-          aria-label="Expand"
-          aria-controls="additional-actions2-content"
-          id="additional-actions2-header"
+          aria-controls="panel1a-content"
+          id="panel1a-header"
         >
-          <FormControlLabel
-            aria-label="Acknowledge"
-            onClick={event => event.stopPropagation()}
-            onFocus={event => event.stopPropagation()}
-            control={<Checkbox />}
-            label="Construction"
-          />
+          <Typography className={classes.heading}>Bathrooms</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography color="textSecondary">
-            The focus event of the nested action will propagate up and also
-            focus the expansion panel unless you explicitly stop it.
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
           </Typography>
         </ExpansionPanelDetails>
-      </ExpansionPanel>
+      </ExpansionPanel>{" "}
       <ExpansionPanel>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
-          aria-label="Expand"
-          aria-controls="additional-actions3-content"
-          id="additional-actions3-header"
+          aria-controls="panel1a-content"
+          id="panel1a-header"
         >
-          <FormControlLabel
-            aria-label="Acknowledge"
-            onClick={event => event.stopPropagation()}
-            onFocus={event => event.stopPropagation()}
-            control={<Checkbox />}
-            label="Bathrooms"
-          />
+          <Typography className={classes.heading}>Renovations</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography color="textSecondary">
-            If you forget to put an aria-label on the nested action, the label
-            of the action will also be included in the label of the parent
-            button that controls the panel expansion.
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
           </Typography>
         </ExpansionPanelDetails>
-      </ExpansionPanel>
+      </ExpansionPanel>{" "}
       <ExpansionPanel>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
-          aria-label="Expand"
-          aria-controls="additional-actions3-content"
-          id="additional-actions3-header"
+          aria-controls="panel1a-content"
+          id="panel1a-header"
         >
-          <FormControlLabel
-            aria-label="Acknowledge"
-            onClick={event => event.stopPropagation()}
-            onFocus={event => event.stopPropagation()}
-            control={<Checkbox />}
-            label="Rennovations"
-          />
+          <Typography className={classes.heading}>Living Area</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography color="textSecondary">
-            If you forget to put an aria-label on the nested action, the label
-            of the action will also be included in the label of the parent
-            button that controls the panel expansion.
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
           </Typography>
         </ExpansionPanelDetails>
-      </ExpansionPanel>
+      </ExpansionPanel>{" "}
       <ExpansionPanel>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
-          aria-label="Expand"
-          aria-controls="additional-actions3-content"
-          id="additional-actions3-header"
+          aria-controls="panel1a-content"
+          id="panel1a-header"
         >
-          <FormControlLabel
-            aria-label="Acknowledge"
-            onClick={event => event.stopPropagation()}
-            onFocus={event => event.stopPropagation()}
-            control={<Checkbox />}
-            label="Living Area"
-          />
+          <Typography className={classes.heading}>Basement</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography color="textSecondary">
-            If you forget to put an aria-label on the nested action, the label
-            of the action will also be included in the label of the parent
-            button that controls the panel expansion.
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
           </Typography>
         </ExpansionPanelDetails>
-      </ExpansionPanel>
+      </ExpansionPanel>{" "}
       <ExpansionPanel>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
-          aria-label="Expand"
-          aria-controls="additional-actions3-content"
-          id="additional-actions3-header"
+          aria-controls="panel1a-content"
+          id="panel1a-header"
         >
-          <FormControlLabel
-            aria-label="Acknowledge"
-            onClick={event => event.stopPropagation()}
-            onFocus={event => event.stopPropagation()}
-            control={<Checkbox />}
-            label="Basement"
-          />
+          <Typography className={classes.heading}>
+            Heating and Cooling
+          </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography color="textSecondary">
-            If you forget to put an aria-label on the nested action, the label
-            of the action will also be included in the label of the parent
-            button that controls the panel expansion.
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
           </Typography>
         </ExpansionPanelDetails>
-      </ExpansionPanel>
+      </ExpansionPanel>{" "}
       <ExpansionPanel>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
-          aria-label="Expand"
-          aria-controls="additional-actions3-content"
-          id="additional-actions3-header"
+          aria-controls="panel1a-content"
+          id="panel1a-header"
         >
-          <FormControlLabel
-            aria-label="Acknowledge"
-            onClick={event => event.stopPropagation()}
-            onFocus={event => event.stopPropagation()}
-            control={<Checkbox />}
-            label="Heating and Cooling"
-          />
+          <Typography className={classes.heading}>Garage</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography color="textSecondary">
-            If you forget to put an aria-label on the nested action, the label
-            of the action will also be included in the label of the parent
-            button that controls the panel expansion.
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
           </Typography>
         </ExpansionPanelDetails>
-      </ExpansionPanel>
+      </ExpansionPanel>{" "}
       <ExpansionPanel>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
-          aria-label="Expand"
-          aria-controls="additional-actions3-content"
-          id="additional-actions3-header"
+          aria-controls="panel1a-content"
+          id="panel1a-header"
         >
-          <FormControlLabel
-            aria-label="Acknowledge"
-            onClick={event => event.stopPropagation()}
-            onFocus={event => event.stopPropagation()}
-            control={<Checkbox />}
-            label="Garage"
-          />
+          <Typography className={classes.heading}>Patios</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography color="textSecondary">
-            If you forget to put an aria-label on the nested action, the label
-            of the action will also be included in the label of the parent
-            button that controls the panel expansion.
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
           </Typography>
         </ExpansionPanelDetails>
-      </ExpansionPanel>
+      </ExpansionPanel>{" "}
       <ExpansionPanel>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
-          aria-label="Expand"
-          aria-controls="additional-actions3-content"
-          id="additional-actions3-header"
+          aria-controls="panel1a-content"
+          id="panel1a-header"
         >
-          <FormControlLabel
-            aria-label="Acknowledge"
-            onClick={event => event.stopPropagation()}
-            onFocus={event => event.stopPropagation()}
-            control={<Checkbox />}
-            label="Patios and Decks"
-          />
+          <Typography className={classes.heading}>Energy Items</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography color="textSecondary">
-            If you forget to put an aria-label on the nested action, the label
-            of the action will also be included in the label of the parent
-            button that controls the panel expansion.
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
           </Typography>
         </ExpansionPanelDetails>
-      </ExpansionPanel>
-      <ExpansionPanel>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-label="Expand"
-          aria-controls="additional-actions3-content"
-          id="additional-actions3-header"
-        >
-          <FormControlLabel
-            aria-label="Acknowledge"
-            onClick={event => event.stopPropagation()}
-            onFocus={event => event.stopPropagation()}
-            control={<Checkbox />}
-            label="Special Energy Items"
-          />
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography color="textSecondary">
-            If you forget to put an aria-label on the nested action, the label
-            of the action will also be included in the label of the parent
-            button that controls the panel expansion.
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
+      </ExpansionPanel>{" "}
     </div>
   );
 };

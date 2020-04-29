@@ -124,7 +124,7 @@ const SignUp = () => {
           disableElevation
           className={classes.margin}
         >
-          Sign In
+          Sign Up
         </Button>
       </form>
     </Container>
