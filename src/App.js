@@ -17,12 +17,12 @@ const App = () => {
   const theme = useTheme();
 
   return (
-    <MuiThemeProvider theme={theme}>
-      <CssBaseline />
-      <AppHeader />
-      <Container maxWidth="xl">
-        <Box m={3}>
-          <BrowserRouter>
+    <BrowserRouter>
+      <MuiThemeProvider theme={theme}>
+        <CssBaseline />
+        <AppHeader />
+        <Container maxWidth="xl">
+          <Box m={3}>
             <Switch>
               <Route path="/" exact component={Dashboard} />
               <Route path="/dashboard" component={Dashboard} />
@@ -30,10 +30,10 @@ const App = () => {
               <Route path="/signin" component={SignIn} />
               <Route path="/signup" component={SignUp} />
             </Switch>
-          </BrowserRouter>
-        </Box>
-      </Container>
-    </MuiThemeProvider>
+          </Box>
+        </Container>
+      </MuiThemeProvider>
+    </BrowserRouter>
   );
 };
 
