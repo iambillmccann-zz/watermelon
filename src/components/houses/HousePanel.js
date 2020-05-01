@@ -29,9 +29,7 @@ const HousePanel = props => {
       >
         <Typography className={classes.heading}>{sectionTitle}</Typography>
       </ExpansionPanelSummary>
-      <ExpansionPanelDetails>
-        <Typography>{props.children}</Typography>
-      </ExpansionPanelDetails>
+      <ExpansionPanelDetails>{props.children}</ExpansionPanelDetails>
     </ExpansionPanel>
   );
 };

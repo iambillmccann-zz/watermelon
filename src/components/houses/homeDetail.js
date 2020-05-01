@@ -3,6 +3,7 @@ import React from "react";
 
 // Material-ui imports
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 
 // My imports
 import HousePanel from "./HousePanel";
@@ -24,34 +25,34 @@ const HomeDetails = props => {
         <GeneralInfo />
       </HousePanel>
       <HousePanel id={id} title="Location">
-        <p>This is where location information goes.</p>
+        <Typography>This is where location information goes.</Typography>
       </HousePanel>
       <HousePanel id={id} title="Bathrooms">
-        <p>This is where bathroom information goes.</p>
+        <Typography>This is where bathroom information goes.</Typography>
       </HousePanel>
       <HousePanel id={id} title="Renovations">
-        <p>This is where renovation information goes.</p>
+        <Typography>This is where renovation information goes.</Typography>
       </HousePanel>
       <HousePanel id={id} title="Living Area">
-        <p>This is where living area information goes.</p>
+        <Typography>This is where living area information goes.</Typography>
       </HousePanel>
       <HousePanel id={id} title="Basement">
-        <p>This is where basement information goes.</p>
+        <Typography>This is where basement information goes.</Typography>
       </HousePanel>
       <HousePanel id={id} title="Heating and Cooling">
-        <p>This is where HVAC information goes.</p>
+        <Typography>This is where HVAC information goes.</Typography>
       </HousePanel>
       <HousePanel id={id} title="Garage">
-        <p>This is where garage information goes.</p>
+        <Typography>This is where garage information goes.</Typography>
       </HousePanel>
       <HousePanel id={id} title="Patios">
-        <p>This is where patio and porch information goes.</p>
+        <Typography>This is where patio and porch information goes.</Typography>
       </HousePanel>
       <HousePanel id={id} title="Other Items">
-        <p>This is where other information goes.</p>
+        <Typography>This is where other information goes.</Typography>
       </HousePanel>
       <HousePanel id={id} title="Comparable">
-        <p>This is where comparable properties go.</p>
+        <Typography>This is where comparable properties go.</Typography>
       </HousePanel>
     </div>
   );

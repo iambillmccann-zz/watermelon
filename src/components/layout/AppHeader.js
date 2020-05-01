@@ -1,6 +1,6 @@
 // React imports
 import React from "react";
-// import { Link as RouterLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Material-UI components
 import AppBar from "@material-ui/core/AppBar";
@@ -37,10 +37,13 @@ const AppHeader = () => {
     <AppBar color="primary" position="static">
       <Toolbar>
         <IconButton
+          id="home-button"
           edge="start"
           className={classes.menuButton}
           color="inherit"
           aria-label="menu"
+          component={Link}
+          to="/dashboard"
         >
           <Home />
         </IconButton>{" "}
