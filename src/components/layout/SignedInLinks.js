@@ -1,5 +1,6 @@
 // React imports
 import React from "react";
+import { Link as RouterLink } from "react-router-dom";
 
 // Material UI import
 import Avatar from "@material-ui/core/Avatar";
@@ -9,7 +10,9 @@ import Box from "@material-ui/core/Box";
 const SignedInLinks = () => {
   return (
     <Box component="span" display="flex">
-      <Button color="inherit">Sign Out</Button>
+      <Button color="inherit" component={RouterLink} to="/">
+        Sign Out
+      </Button>
       <Avatar>WM</Avatar>
     </Box>
   );

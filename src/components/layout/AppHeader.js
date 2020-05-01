@@ -1,10 +1,9 @@
 // React imports
 import React from "react";
-// simport { Link } from "react-router-dom";
+// import { Link as RouterLink } from "react-router-dom";
 
 // Material-UI components
 import AppBar from "@material-ui/core/AppBar";
-// import Box from "@material-ui/core/Box";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Home from "@material-ui/icons/Home";
