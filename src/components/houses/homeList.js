@@ -1,6 +1,7 @@
 // React import
 import React from "react";
 import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 // Material UI import
 import { makeStyles } from "@material-ui/core/styles";
@@ -27,6 +28,10 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary
   }
 }));
+
+const GetURL = () => {
+  return "/homes/" + uuidv4();
+};
 
 const HomeList = () => {
   const classes = useStyles();
@@ -58,7 +63,7 @@ const HomeList = () => {
         aria-label="add"
         className={classes.fab}
         component={Link}
-        to="/homes/new"
+        to={GetURL}
       >
         <AddIcon />
       </Fab>
