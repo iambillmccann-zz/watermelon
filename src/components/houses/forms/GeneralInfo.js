@@ -17,6 +17,7 @@ const useStyles = makeStyles(theme => ({
 const GeneralInfo = () => {
   // use state hooks
   const classes = useStyles();
+  const [name, setName] = useState();
   const [streetAddress, setStreetAddress] = useState();
   const [addressLine2, setAddressLine2] = useState();
   const [city, setCity] = useState();
@@ -27,7 +28,8 @@ const GeneralInfo = () => {
     e.preventDefault();
   };
   const handleChange = e => {
-    if (e.event.id === "streetAddress") setStreetAddress(e.event.value);
+    if (e.event.id === "name") setName(e.event.value);
+    else if (e.event.id === "streetAddress") setStreetAddress(e.event.value);
     else if (e.event.id === "addressLine2") setAddressLine2(e.event.value);
     else if (e.event.id === "city") setCity(e.event.value);
     else if (e.event.id === "stateUS") setStateUS(e.event.value);
@@ -37,6 +39,19 @@ const GeneralInfo = () => {
   return (
     <Container maxWidth="sm">
       <form onSubmit={handleSubmit}>
+        <TextField
+          id="name"
+          className={classes.margin}
+          autoComplete="name"
+          fullWidth
+          label="name"
+          placeholder="My latest listing"
+          required
+          type="text"
+          value={name}
+          variant="outlined"
+          onChange={handleChange}
+        />
         <TextField
           id="streetAddress"
           className={classes.margin}

@@ -27,7 +27,7 @@ const HomeSummary = props => {
         <CardMedia
           className={classes.media}
           image="/static/images/house-placeholder-1.jpg"
-          title="Contemplative Reptile"
+          title="Picture of the house"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
