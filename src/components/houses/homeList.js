@@ -30,6 +30,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+// GetURL uses uuid to obtain a unique identifier for a new home. The identifier is only a temporary placeholder,
+// the permanent id is computed in the HouseReducer when the data is stored.
 const GetURL = () => {
   return "/homes/" + uuidv4();
 };

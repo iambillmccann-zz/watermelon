@@ -1,6 +1,9 @@
-import React, { createContext, useState } from "react";
+// React imports
+import React, { createContext, useReducer } from "react";
 
-export const HouseContext = createContext();
+// My imports
+import { HouseReducer } from "../reducers/HouseReducer";
+
 const initialState = [
   {
     id: "1",
@@ -22,10 +25,12 @@ const initialState = [
   }
 ];
 
+export const HouseContext = createContext();
 const HouseContextProvider = props => {
-  const [houses, setHouses] = useState(initialState);
+  const [houses, dispatch] = useReducer(HouseReducer, initialState);
+  // alert("The number of houses is " + houses.length);
   return (
-    <HouseContext.Provider value={{ houses }}>
+    <HouseContext.Provider value={{ houses, dispatch }}>
       {props.children}
     </HouseContext.Provider>
   );
