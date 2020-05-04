@@ -1,21 +1,34 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, Component } from "react";
 
 export const HouseContext = createContext();
 
-const HouseContextProvider = props => {
-  const [house, setHouse] = useState({
+const initialHouses = {
+  houses: [
+    {
+      streetAddress: "9 Appletree dr",
+      addressLine2: "",
+      city: "Matawan",
+      stateUS: "NJ",
+      zipCode: "07747"
+    }
+  ]
+};
+
+class HouseContextProvider extends Component {
+  state = {
     streetAddress: "",
     addressLine2: "",
     city: "",
     stateUS: "",
     zipCode: ""
-  });
-
-  return (
-    <HouseContext.Provider value={{ ...house, setHouse: setHouse }}>
-      {props.children}
-    </HouseContext.Provider>
-  );
-};
+  };
+  render() {
+    return (
+      <HouseContext.Provider value={{ ...this.state }}>
+        {this.props.children}
+      </HouseContext.Provider>
+    );
+  }
+}
 
 export default HouseContextProvider;
