@@ -41,10 +41,10 @@ const HomeList = () => {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        {houses.map(home => {
+        {houses.map(house => {
           return (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={home.id}>
-              <HomeSummary />
+            <Grid item xs={12} sm={6} md={4} lg={3} key={house.id}>
+              <HomeSummary house={house} />
             </Grid>
           );
         })}

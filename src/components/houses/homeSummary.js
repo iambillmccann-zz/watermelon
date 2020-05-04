@@ -17,8 +17,9 @@ const useStyles = makeStyles({
   }
 });
 
-const HomeSummary = () => {
+const HomeSummary = props => {
   const classes = useStyles();
+  const { house } = props;
 
   return (
     <Card className={classes.root}>
@@ -30,11 +31,11 @@ const HomeSummary = () => {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            $450,000
+            {house.name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            9 Appletree Dr.
-            <br /> Matawan, NJ 07747
+            {house.streetAddress}
+            <br /> {house.city}, {house.stateUS} {house.zipCode}
           </Typography>
         </CardContent>
       </CardActionArea>
