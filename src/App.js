@@ -12,6 +12,7 @@ import AppHeader from "./components/layout/AppHeader";
 import HomeDetail from "./components/houses/HomeDetail";
 import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
+import HouseContextProvider from "./contexts/HouseContext";
 
 const App = () => {
   const theme = useTheme();
@@ -19,19 +20,21 @@ const App = () => {
   return (
     <BrowserRouter>
       <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        <AppHeader />
-        <Container maxWidth="xl">
-          <Box m={3}>
-            <Switch>
-              <Route path="/" exact component={Dashboard} />
-              <Route path="/dashboard" component={Dashboard} />
-              <Route path="/homes/:id" component={HomeDetail} />
-              <Route path="/signin" component={SignIn} />
-              <Route path="/signup" component={SignUp} />
-            </Switch>
-          </Box>
-        </Container>
+        <HouseContextProvider>
+          <CssBaseline />
+          <AppHeader />
+          <Container maxWidth="xl">
+            <Box m={3}>
+              <Switch>
+                <Route path="/" exact component={Dashboard} />
+                <Route path="/dashboard" component={Dashboard} />
+                <Route path="/homes/:id" component={HomeDetail} />
+                <Route path="/signin" component={SignIn} />
+                <Route path="/signup" component={SignUp} />
+              </Switch>
+            </Box>
+          </Container>
+        </HouseContextProvider>
       </MuiThemeProvider>
     </BrowserRouter>
   );

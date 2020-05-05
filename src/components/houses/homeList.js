@@ -11,6 +11,7 @@ import AddIcon from "@material-ui/icons/Add";
 
 // My components
 import HomeSummary from "./HomeSummary";
+import { HouseContext, useHouses } from "../../contexts/HouseContext";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,34 +30,26 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+// GetURL uses uuid to obtain a unique identifier for a new home. The identifier is only a temporary placeholder,
+// the permanent id is computed in the HouseReducer when the data is stored.
 const GetURL = () => {
   return "/homes/" + uuidv4();
 };
 
 const HomeList = () => {
   const classes = useStyles();
+  const { houses } = useHouses(HouseContext);
 
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={6} md={4} lg={3}>
-          <HomeSummary />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={3}>
-          <HomeSummary />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={3}>
-          <HomeSummary />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={3}>
-          <HomeSummary />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={3}>
-          <HomeSummary />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={3}>
-          <HomeSummary />
-        </Grid>
+        {houses.map(house => {
+          return (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={house.id}>
+              <HomeSummary house={house} />
+            </Grid>
+          );
+        })}
       </Grid>
       <Fab
         color="primary"

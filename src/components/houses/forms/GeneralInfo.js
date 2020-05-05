@@ -1,5 +1,6 @@
 // React imports
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 // Material UI
 // import CssBaseline from "@material-ui/core/CssBaseline";
@@ -7,6 +8,9 @@ import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+
+// My imports
+import { HouseContext, useHouses } from "../../../contexts/HouseContext";
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -17,26 +21,38 @@ const useStyles = makeStyles(theme => ({
 const GeneralInfo = () => {
   // use state hooks
   const classes = useStyles();
-  const [streetAddress, setStreetAddress] = useState();
-  const [addressLine2, setAddressLine2] = useState();
-  const [city, setCity] = useState();
-  const [stateUS, setStateUS] = useState();
-  const [zipCode, setZipCode] = useState();
+  const { dispatch } = useHouses(HouseContext);
+  const [name, setName] = useState("");
+  const [streetAddress, setStreetAddress] = useState("");
+  const [addressLine2, setAddressLine2] = useState("");
+  const [city, setCity] = useState("");
+  const [stateUS, setStateUS] = useState("");
+  const [zipCode, setZipCode] = useState("");
   // event functions
   const handleSubmit = e => {
     e.preventDefault();
-  };
-  const handleChange = e => {
-    if (e.event.id === "streetAddress") setStreetAddress(e.event.value);
-    else if (e.event.id === "addressLine2") setAddressLine2(e.event.value);
-    else if (e.event.id === "city") setCity(e.event.value);
-    else if (e.event.id === "stateUS") setStateUS(e.event.value);
-    else setZipCode(e.event.value);
+    dispatch({
+      type: "ADD",
+      house: { name, streetAddress, addressLine2, city, stateUS, zipCode }
+    });
   };
 
   return (
     <Container maxWidth="sm">
       <form onSubmit={handleSubmit}>
+        <TextField
+          id="name"
+          className={classes.margin}
+          autoComplete="name"
+          fullWidth
+          label="name"
+          placeholder="My latest listing"
+          required
+          type="text"
+          value={name}
+          variant="outlined"
+          onChange={e => setName(e.target.value)}
+        />
         <TextField
           id="streetAddress"
           className={classes.margin}
@@ -48,7 +64,7 @@ const GeneralInfo = () => {
           type="text"
           value={streetAddress}
           variant="outlined"
-          onChange={handleChange}
+          onChange={e => setStreetAddress(e.target.value)}
         />
         <TextField
           id="addressLine2"
@@ -59,7 +75,7 @@ const GeneralInfo = () => {
           type="text"
           value={addressLine2}
           variant="outlined"
-          onChange={handleChange}
+          onChange={e => setAddressLine2(e.target.value)}
         />
         <TextField
           id="city"
@@ -72,7 +88,7 @@ const GeneralInfo = () => {
           type="text"
           value={city}
           variant="outlined"
-          onChange={handleChange}
+          onChange={e => setCity(e.target.value)}
         />
         <TextField
           id="stateUS"
@@ -85,7 +101,7 @@ const GeneralInfo = () => {
           type="text"
           value={stateUS}
           variant="outlined"
-          onChange={handleChange}
+          onChange={e => setStateUS(e.target.value)}
         />
         <TextField
           id="zipCode"
@@ -98,13 +114,14 @@ const GeneralInfo = () => {
           type="text"
           value={zipCode}
           variant="outlined"
-          onChange={handleChange}
+          onChange={e => setZipCode(e.target.value)}
         />
         <Button
           variant="contained"
           color="primary"
           disableElevation
           className={classes.margin}
+          type="submit"
         >
           OK
         </Button>
@@ -113,6 +130,9 @@ const GeneralInfo = () => {
           color="primary"
           disableElevation
           className={classes.margin}
+          type="reset"
+          component={Link}
+          to="/dashboard"
         >
           Cancel
         </Button>
