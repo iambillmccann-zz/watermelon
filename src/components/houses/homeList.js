@@ -1,5 +1,5 @@
 // React import
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
@@ -11,7 +11,7 @@ import AddIcon from "@material-ui/icons/Add";
 
 // My components
 import HomeSummary from "./HomeSummary";
-import { HouseContext } from "../../contexts/HouseContext";
+import { HouseContext, useHouses } from "../../contexts/HouseContext";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -38,7 +38,7 @@ const GetURL = () => {
 
 const HomeList = () => {
   const classes = useStyles();
-  const { houses } = useContext(HouseContext);
+  const { houses } = useHouses(HouseContext);
 
   return (
     <div className={classes.root}>

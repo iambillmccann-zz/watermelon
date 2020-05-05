@@ -12,7 +12,6 @@ import Box from "@material-ui/core/Box";
 
 // My imports
 import HomeList from "../houses/HomeList";
-import HouseContextProvider from "../../contexts/HouseContext";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -72,9 +71,7 @@ const AppTabs = () => {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <HouseContextProvider>
-          <HomeList />
-        </HouseContextProvider>
+        <HomeList />
       </TabPanel>
       <TabPanel value={value} index={1}>
         Comparable homes

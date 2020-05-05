@@ -1,5 +1,5 @@
 // React imports
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useContext } from "react";
 
 // My imports
 import { HouseReducer } from "../reducers/HouseReducer";
@@ -28,12 +28,17 @@ const initialState = [
 export const HouseContext = createContext();
 const HouseContextProvider = props => {
   const [houses, dispatch] = useReducer(HouseReducer, initialState);
-  // alert("The number of houses is " + houses.length);
+  console.log(houses);
   return (
     <HouseContext.Provider value={{ houses, dispatch }}>
       {props.children}
     </HouseContext.Provider>
   );
+};
+
+export const useHouses = () => {
+  const contextValue = useContext(HouseContext);
+  return contextValue;
 };
 
 export default HouseContextProvider;

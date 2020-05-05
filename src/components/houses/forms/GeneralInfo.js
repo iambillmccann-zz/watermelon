@@ -1,5 +1,5 @@
 // React imports
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 // Material UI
@@ -10,7 +10,7 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
 // My imports
-import { HouseContext } from "../../../contexts/HouseContext";
+import { HouseContext, useHouses } from "../../../contexts/HouseContext";
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 const GeneralInfo = () => {
   // use state hooks
   const classes = useStyles();
-  const { dispatch } = useContext(HouseContext);
+  const { dispatch } = useHouses(HouseContext);
   const [name, setName] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
   const [addressLine2, setAddressLine2] = useState("");

@@ -8,7 +8,6 @@ import Typography from "@material-ui/core/Typography";
 // My imports
 import HousePanel from "./HousePanel";
 import GeneralInfo from "./forms/GeneralInfo";
-import HouseContextProvider from "../../contexts/HouseContext";
 
 const useStyles = makeStyles({
   root: {
@@ -23,9 +22,7 @@ const HomeDetails = props => {
   return (
     <div className={classes.root}>
       <HousePanel id={id} title="Address and Location">
-        <HouseContextProvider>
-          <GeneralInfo />
-        </HouseContextProvider>
+        <GeneralInfo />
       </HousePanel>
       <HousePanel id={id} title="Location">
         <Typography>This is where location information goes.</Typography>
