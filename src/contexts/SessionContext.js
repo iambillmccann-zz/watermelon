@@ -2,7 +2,7 @@
 import React, { createContext, useReducer, useContext } from "react";
 
 // My imports
-import { SessionReducer } from "../reducers/HouseReducer";
+import { SessionReducer } from "../reducers/SessionReducer";
 
 const initialState = {
   email: "",
@@ -22,7 +22,7 @@ const SessionContextProvider = props => {
   );
 };
 
-export const useHouses = () => {
+export const useSession = () => {
   const contextValue = useContext(SessionContext);
   return contextValue;
 };
