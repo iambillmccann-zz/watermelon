@@ -13,6 +13,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // My components
 import SignedInLinks from "../../components/layout/SignedInLinks";
 import SignedOutLinks from "../../components/layout/SignedOutLinks";
+import { SessionContext, useSession } from "../../contexts/SessionContext";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,6 +33,7 @@ const useStyles = makeStyles(theme => ({
 
 const AppHeader = () => {
   const classes = useStyles();
+  const { session } = useSession(SessionContext);
 
   return (
     <AppBar color="primary" position="static">
@@ -50,8 +52,11 @@ const AppHeader = () => {
         <Typography variant="h6" className={classes.title}>
           WATERMELON
         </Typography>
-        <SignedOutLinks className={classes.links} />
-        <SignedInLinks className={classes.links} />
+        {session.isAuthenticated ? (
+          <SignedInLinks className={classes.links} />
+        ) : (
+          <SignedOutLinks className={classes.links} />
+        )}
       </Toolbar>
     </AppBar>
   );

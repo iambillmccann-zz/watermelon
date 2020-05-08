@@ -43,13 +43,14 @@ const HomeList = () => {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        {houses.map(house => {
-          return (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={house.id}>
-              <HomeSummary house={house} />
-            </Grid>
-          );
-        })}
+        {houses && // Use this condition to gracefully handle a null list
+          houses.map(house => {
+            return (
+              <Grid item xs={12} sm={6} md={4} lg={3} key={house.id}>
+                <HomeSummary house={house} />
+              </Grid>
+            );
+          })}
       </Grid>
       <Fab
         color="primary"

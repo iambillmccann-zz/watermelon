@@ -28,7 +28,6 @@ const initialState = [
 export const HouseContext = createContext();
 const HouseContextProvider = props => {
   const [houses, dispatch] = useReducer(HouseReducer, initialState);
-  console.log(houses);
   return (
     <HouseContext.Provider value={{ houses, dispatch }}>
       {props.children}
