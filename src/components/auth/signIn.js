@@ -1,12 +1,15 @@
 // React imports
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 
 // Material UI
-// import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+
+// My imports
+import { SessionContext, useSession } from "../../contexts/SessionContext";
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -15,19 +18,18 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SignIn = () => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { session, dispatch } = useSession(SessionContext);
   const handleSubmit = e => {
     e.preventDefault();
-  };
-  const handleChange = e => {
-    if (e.event.id === "userid") setEmail(e.event.value);
-    else setPassword(e.event.value);
+    dispatch({ type: "SIGNIN", session: { email, password } });
   };
   const classes = useStyles();
 
   return (
     <Container maxWidth="sm">
+      {session.isAuthenticated ? <Redirect to="/" n /> : null}
       <form onSubmit={handleSubmit}>
         <h1 className={classes.margin}>Sign In</h1>
         <TextField
@@ -46,7 +48,7 @@ const SignIn = () => {
           type="email"
           value={email}
           variant="outlined"
-          onChange={handleChange}
+          onChange={e => setEmail(e.target.value)}
         />
         <TextField
           className={classes.margin}
@@ -61,13 +63,14 @@ const SignIn = () => {
           type="password"
           value={password}
           variant="outlined"
-          onChange={handleChange}
+          onChange={e => setPassword(e.target.value)}
         />
         <Button
           variant="contained"
           color="primary"
           disableElevation
           className={classes.margin}
+          type="submit"
         >
           Sign In
         </Button>
