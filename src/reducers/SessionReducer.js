@@ -3,7 +3,7 @@ export const SessionReducer = (state, action) => {
     case "SIGNIN":
       return {
         email: action.session.email,
-        password: action.session.email,
+        password: action.session.pasword,
         isAuthenticated: true
       };
     case "SIGNOUT":
