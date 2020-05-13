@@ -26,10 +26,12 @@ const SignUp = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [confirmedPwd, setConfirmedPwd] = useState("");
+  const [isSignedUp, setIsSignedUp] = useState(false);
   const { session, dispatch } = useSession(SessionContext);
   const handleSubmit = e => {
     e.preventDefault();
     dispatch({ type: "SIGNUP", session: { email, password } });
+    setIsSignedUp(true);
   };
   const classes = useStyles();
   const signUp = () => {
@@ -100,6 +102,7 @@ const SignUp = () => {
 
   return (
     <Container maxWidth="sm">
+      {isSignedUp ? <Redirect to="/signin" n /> : null}
       <form onSubmit={handleSubmit}>
         <h1 className={classes.margin}>Sign Up</h1>
         <TextField
