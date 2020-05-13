@@ -12,6 +12,12 @@ export const SessionReducer = (state, action) => {
         password: "",
         isAuthenticated: false
       };
+    case "SIGNUP":
+      return {
+        email: "",
+        password: "",
+        isAuthenticated: false
+      };
     default:
       return state;
   }

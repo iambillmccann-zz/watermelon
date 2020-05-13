@@ -29,7 +29,7 @@ const SignUp = () => {
   const { session, dispatch } = useSession(SessionContext);
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch({ type: "SIGNIN", session: { email, password } });
+    dispatch({ type: "SIGNUP", session: { email, password } });
   };
   const classes = useStyles();
   const signUp = () => {
@@ -100,7 +100,6 @@ const SignUp = () => {
 
   return (
     <Container maxWidth="sm">
-      {session.isAuthenticated ? <Redirect to="/signin" n /> : null}
       <form onSubmit={handleSubmit}>
         <h1 className={classes.margin}>Sign Up</h1>
         <TextField
