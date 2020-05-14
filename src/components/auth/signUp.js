@@ -27,7 +27,7 @@ const SignUp = () => {
   const [lastName, setLastName] = useState("");
   const [confirmedPwd, setConfirmedPwd] = useState("");
   const [isSignedUp, setIsSignedUp] = useState(false);
-  const { session, dispatch } = useSession(SessionContext);
+  const { dispatch } = useSession(SessionContext);
   const handleSubmit = e => {
     e.preventDefault();
     dispatch({ type: "SIGNUP", session: { email, password } });
@@ -35,25 +35,20 @@ const SignUp = () => {
   };
   const classes = useStyles();
   const signUp = () => {
-    const {
-      emailAddress,
-      emailAddressConfirmation,
-      password,
-      passwordConfirmation
-    } = this.state;
-
     const errors = validate(
       {
-        emailAddress: emailAddress,
-        emailAddressConfirmation: emailAddressConfirmation,
+        email: email,
         password: password,
-        passwordConfirmation: passwordConfirmation
+        firstName: firstName,
+        lastName: lastName,
+        confirmedPwd: confirmedPwd
       },
       {
-        emailAddress: constraints.emailAddress,
-        emailAddressConfirmation: constraints.emailAddressConfirmation,
+        email: constraints.email,
         password: constraints.password,
-        passwordConfirmation: constraints.passwordConfirmation
+        firstName: constraints.firstName,
+        lastName: constraints.lastName,
+        confirmedPwd: constraints.confirmedPwd
       }
     );
 
@@ -69,7 +64,7 @@ const SignUp = () => {
         },
         () => {
           authentication
-            .signUpWithEmailAddressAndPassword(emailAddress, password)
+            .signUpWithEmailAddressAndPassword(email, password)
             .then(value => {
               this.props.dialogProps.onClose();
             })

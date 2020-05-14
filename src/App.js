@@ -14,6 +14,7 @@ import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
 import HouseContextProvider from "./contexts/HouseContext";
 import SessionContextProvider from "./contexts/SessionContext";
+import LaunchPage from "./components/dashboard/LaunchPage";
 
 const App = () => {
   const theme = useTheme();
@@ -28,7 +29,7 @@ const App = () => {
             <Container maxWidth="xl">
               <Box m={3}>
                 <Switch>
-                  <Route path="/" exact component={Dashboard} />
+                  <Route path="/" exact component={LaunchPage} />
                   <Route path="/dashboard" component={Dashboard} />
                   <Route path="/homes/:id" component={HomeDetail} />
                   <Route path="/signin" component={SignIn} />
