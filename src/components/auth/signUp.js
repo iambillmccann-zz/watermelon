@@ -1,12 +1,18 @@
 // React imports
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
+import validate from "validate.js";
 
 // Material UI
-// import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+
+// My imports
+import { SessionContext, useSession } from "../../contexts/SessionContext";
+import constraints from "../../constraints";
+import authentication from "../../services/authentication";
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -15,26 +21,83 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SignUp = () => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [confirmedPwd, setConfirmedPwd] = useState();
-
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [confirmedPwd, setConfirmedPwd] = useState("");
+  const [isSignedUp, setIsSignedUp] = useState(false);
+  const { dispatch } = useSession(SessionContext);
   const handleSubmit = e => {
     e.preventDefault();
-  };
-  const handleChange = e => {
-    if (e.event.id === "userid") setEmail(e.event.value);
-    else if (e.event.id === "firstname") setFirstName(e.event.value);
-    else if (e.event.id === "lastname") setLastName(e.event.value);
-    else if (e.event.id === "confirmedpwd") setConfirmedPwd(e.event.value);
-    else setPassword(e.event.value);
+    dispatch({ type: "SIGNUP", session: { email, password } });
+    setIsSignedUp(true);
   };
   const classes = useStyles();
+  const signUp = () => {
+    const errors = validate(
+      {
+        email: email,
+        password: password,
+        firstName: firstName,
+        lastName: lastName,
+        confirmedPwd: confirmedPwd
+      },
+      {
+        email: constraints.email,
+        password: constraints.password,
+        firstName: constraints.firstName,
+        lastName: constraints.lastName,
+        confirmedPwd: constraints.confirmedPwd
+      }
+    );
+
+    if (errors) {
+      this.setState({
+        errors: errors
+      });
+    } else {
+      this.setState(
+        {
+          performingAction: true,
+          errors: null
+        },
+        () => {
+          authentication
+            .signUpWithEmailAddressAndPassword(email, password)
+            .then(value => {
+              this.props.dialogProps.onClose();
+            })
+            .catch(reason => {
+              const code = reason.code;
+              const message = reason.message;
+
+              switch (code) {
+                case "auth/email-already-in-use":
+                case "auth/invalid-email":
+                case "auth/operation-not-allowed":
+                case "auth/weak-password":
+                  this.props.openSnackbar(message);
+                  return;
+
+                default:
+                  this.props.openSnackbar(message);
+                  return;
+              }
+            })
+            .finally(() => {
+              this.setState({
+                performingAction: false
+              });
+            });
+        }
+      );
+    }
+  };
 
   return (
     <Container maxWidth="sm">
+      {isSignedUp ? <Redirect to="/signin" n /> : null}
       <form onSubmit={handleSubmit}>
         <h1 className={classes.margin}>Sign Up</h1>
         <TextField
@@ -51,7 +114,7 @@ const SignUp = () => {
           required
           value={firstName}
           variant="outlined"
-          onChange={handleChange}
+          onChange={e => setFirstName(e.target.value)}
         />
         <TextField
           id="lastname"
@@ -67,7 +130,7 @@ const SignUp = () => {
           required
           value={lastName}
           variant="outlined"
-          onChange={handleChange}
+          onChange={e => setLastName(e.target.value)}
         />
         <TextField
           id="userid"
@@ -84,7 +147,7 @@ const SignUp = () => {
           required
           value={email}
           variant="outlined"
-          onChange={handleChange}
+          onChange={e => setEmail(e.target.value)}
         />
         <TextField
           id="password"
@@ -100,7 +163,7 @@ const SignUp = () => {
           type="password"
           value={password}
           variant="outlined"
-          onChange={handleChange}
+          onChange={e => setPassword(e.target.value)}
         />
         <TextField
           id="confirmedpwd"
@@ -116,13 +179,14 @@ const SignUp = () => {
           type="password"
           value={confirmedPwd}
           variant="outlined"
-          onChange={handleChange}
+          onChange={e => setConfirmedPwd(e.target.value)}
         />
         <Button
           variant="contained"
           color="primary"
           disableElevation
           className={classes.margin}
+          type="submit"
         >
           Sign Up
         </Button>

@@ -69,7 +69,7 @@ const constraints = {
     type: "string"
   },
 
-  passwordConfirmation: {
+  confirmedPwd: {
     equality: "password",
 
     length: {

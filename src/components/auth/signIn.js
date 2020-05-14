@@ -29,7 +29,7 @@ const SignIn = () => {
 
   return (
     <Container maxWidth="sm">
-      {session.isAuthenticated ? <Redirect to="/" n /> : null}
+      {session.isAuthenticated ? <Redirect to="/dashboard" n /> : null}
       <form onSubmit={handleSubmit}>
         <h1 className={classes.margin}>Sign In</h1>
         <TextField
