@@ -1,5 +1,4 @@
 import firebase, { analytics, auth, firestore, storage } from "../firebase";
-
 import moment from "moment";
 
 const authentication = {};
@@ -81,8 +80,8 @@ authentication.signUpWithEmailAddressAndPassword = (emailAddress, password) => {
 
       return;
     }
-
     if (auth.currentUser) {
+      console.log(auth.currentUser);
       reject();
 
       return;

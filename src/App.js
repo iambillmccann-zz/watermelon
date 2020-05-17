@@ -1,6 +1,8 @@
 // React imports
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+
+// Material UI imports
 import { MuiThemeProvider, useTheme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Box from "@material-ui/core/Box";
