@@ -8,11 +8,12 @@ import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+// import SimpleSnackBar from "../SimpleSnackBar";
 
 // My imports
 import { SessionContext, useSession } from "../../contexts/SessionContext";
 import constraints from "../../constraints";
-import authentication from "../../services/authentication";
+import signup from "../../services/firebaseAuth";
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -20,22 +21,23 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SignUp = () => {
+const SignUp = props => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [confirmedPwd, setConfirmedPwd] = useState("");
-  const [isSignedUp, setIsSignedUp] = useState(false);
+  const [performingAction, setPerformingAction] = useState(false);
+  const [errors, setErrors] = useState();
   const { dispatch } = useSession(SessionContext);
   const handleSubmit = e => {
     e.preventDefault();
+    enroll();
     dispatch({ type: "SIGNUP", session: { email, password } });
-    setIsSignedUp(true);
   };
   const classes = useStyles();
-  const signUp = () => {
-    const errors = validate(
+  const enroll = () => {
+    const results = validate(
       {
         email: email,
         password: password,
@@ -52,64 +54,30 @@ const SignUp = () => {
       }
     );
 
-    if (errors) {
-      this.setState({
-        errors: errors
-      });
+    if (results) {
+      setErrors(results);
     } else {
-      this.setState(
-        {
-          performingAction: true,
-          errors: null
-        },
-        () => {
-          authentication
-            .signUpWithEmailAddressAndPassword(email, password)
-            .then(value => {
-              this.props.dialogProps.onClose();
-            })
-            .catch(reason => {
-              const code = reason.code;
-              const message = reason.message;
-
-              switch (code) {
-                case "auth/email-already-in-use":
-                case "auth/invalid-email":
-                case "auth/operation-not-allowed":
-                case "auth/weak-password":
-                  this.props.openSnackbar(message);
-                  return;
-
-                default:
-                  this.props.openSnackbar(message);
-                  return;
-              }
-            })
-            .finally(() => {
-              this.setState({
-                performingAction: false
-              });
-            });
-        }
-      );
+      setPerformingAction(true);
+      setErrors(null);
+      signup(email, password);
     }
   };
 
   return (
     <Container maxWidth="sm">
-      {isSignedUp ? <Redirect to="/signin" n /> : null}
+      {performingAction ? <Redirect to="/signin" n /> : null}
       <form onSubmit={handleSubmit}>
         <h1 className={classes.margin}>Sign Up</h1>
         <TextField
           id="firstname"
           className={classes.margin}
           autoComplete="first-name"
-          //disabled={performingAction}
-          //error={!!(errors && errors.emailAddress)}
+          disabled={performingAction}
+          error={!!(errors && errors.emailAddress)}
           fullWidth
-          //helperText={
-          //  errors && errors.emailAddress ? errors.emailAddress[0] : ""
-          //}
+          helperText={
+            errors && errors.emailAddress ? errors.emailAddress[0] : ""
+          }
           label="First Name"
           required
           value={firstName}
@@ -120,12 +88,12 @@ const SignUp = () => {
           id="lastname"
           className={classes.margin}
           autoComplete="last-name"
-          //disabled={performingAction}
-          //error={!!(errors && errors.emailAddress)}
+          disabled={performingAction}
+          error={!!(errors && errors.emailAddress)}
           fullWidth
-          //helperText={
-          //  errors && errors.emailAddress ? errors.emailAddress[0] : ""
-          //}
+          helperText={
+            errors && errors.emailAddress ? errors.emailAddress[0] : ""
+          }
           label="Last Name"
           required
           value={lastName}
@@ -136,12 +104,12 @@ const SignUp = () => {
           id="userid"
           className={classes.margin}
           autoComplete="email"
-          //disabled={performingAction}
-          //error={!!(errors && errors.emailAddress)}
+          disabled={performingAction}
+          error={!!(errors && errors.emailAddress)}
           fullWidth
-          //helperText={
-          //  errors && errors.emailAddress ? errors.emailAddress[0] : ""
-          //}
+          helperText={
+            errors && errors.emailAddress ? errors.emailAddress[0] : ""
+          }
           label="E-mail address"
           placeholder="john@doe.com"
           required
@@ -153,10 +121,10 @@ const SignUp = () => {
           id="password"
           className={classes.margin}
           autoComplete="current-password"
-          //disabled={performingAction}
-          //error={!!(errors && errors.password)}
+          disabled={performingAction}
+          error={!!(errors && errors.password)}
           fullWidth
-          //helperText={errors && errors.password ? errors.password[0] : ""}
+          helperText={errors && errors.password ? errors.password[0] : ""}
           label="Password"
           placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
           required
@@ -169,10 +137,10 @@ const SignUp = () => {
           id="confirmedpwd"
           className={classes.margin}
           autoComplete="confirm-password"
-          //disabled={performingAction}
-          //error={!!(errors && errors.password)}
+          disabled={performingAction}
+          error={!!(errors && errors.password)}
           fullWidth
-          //helperText={errors && errors.password ? errors.password[0] : ""}
+          helperText={errors && errors.password ? errors.password[0] : ""}
           label="Retype Password"
           placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
           required
