@@ -13,7 +13,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // My imports
 import { SessionContext, useSession } from "../../contexts/SessionContext";
 import constraints from "../../constraints";
-import signup from "../../services/firebaseAuth";
+import { signup } from "../../services/firebaseAuth";
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -22,6 +22,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SignUp = props => {
+  // form properties
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -30,12 +31,15 @@ const SignUp = props => {
   const [performingAction, setPerformingAction] = useState(false);
   const [errors, setErrors] = useState();
   const { dispatch } = useSession(SessionContext);
+
+  // form actions
   const handleSubmit = e => {
     e.preventDefault();
     enroll();
     dispatch({ type: "SIGNUP", session: { email, password } });
   };
-  const classes = useStyles();
+
+  // fireback signup function
   const enroll = () => {
     const results = validate(
       {
@@ -57,15 +61,19 @@ const SignUp = props => {
     if (results) {
       setErrors(results);
     } else {
-      setPerformingAction(true);
       setErrors(null);
-      signup(email, password);
+      signup(email, password, x => {
+        setPerformingAction(x);
+      });
     }
   };
 
+  // Custom hooks
+  const classes = useStyles();
+
   return (
     <Container maxWidth="sm">
-      {performingAction ? <Redirect to="/signin" n /> : null}
+      {performingAction ? <Redirect to="/dashboard" n /> : null}
       <form onSubmit={handleSubmit}>
         <h1 className={classes.margin}>Sign Up</h1>
         <TextField
