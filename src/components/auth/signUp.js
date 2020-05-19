@@ -11,7 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // import SimpleSnackBar from "../SimpleSnackBar";
 
 // My imports
-import { SessionContext, useSession } from "../../contexts/SessionContext";
+// import { SessionContext, useSession } from "../../contexts/SessionContext";
 import constraints from "../../constraints";
 import { signup } from "../../services/firebaseAuth";
 
@@ -30,13 +30,12 @@ const SignUp = props => {
   const [confirmedPwd, setConfirmedPwd] = useState("");
   const [performingAction, setPerformingAction] = useState(false);
   const [errors, setErrors] = useState();
-  const { dispatch } = useSession(SessionContext);
+  // const { dispatch } = useSession(SessionContext);
 
   // form actions
   const handleSubmit = e => {
     e.preventDefault();
     enroll();
-    dispatch({ type: "SIGNUP", session: { email, password } });
   };
 
   // fireback signup function

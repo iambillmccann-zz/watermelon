@@ -4,19 +4,25 @@ export const SessionReducer = (state, action) => {
       return {
         email: action.session.email,
         password: action.session.pasword,
-        isAuthenticated: true
+        isAuthenticated: action.session.isAuthenticated
       };
     case "SIGNOUT":
       return {
-        email: "",
-        password: "",
+        email: null,
+        password: null,
         isAuthenticated: false
       };
     case "SIGNUP":
       return {
-        email: "",
-        password: "",
+        email: null,
+        password: null,
         isAuthenticated: false
+      };
+    case "UPDATE":
+      return {
+        email: action.session.email,
+        password: action.session.pasword,
+        isAuthenticated: action.session.isAuthenticated
       };
     default:
       return state;
