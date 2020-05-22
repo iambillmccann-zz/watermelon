@@ -21,7 +21,7 @@ export const SessionContext = createContext();
 // create the context provider
 const SessionContextProvider = props => {
   const [session, dispatch] = useReducer(SessionReducer, initialState);
-
+  console.log("In session context provider");
   return (
     <SessionContext.Provider value={{ session, dispatch }}>
       {props.children}
@@ -32,9 +32,10 @@ const SessionContextProvider = props => {
 // create the customer
 export const useSession = () => {
   const contextState = useContext(SessionContext);
-  useEffect(contextState => {
-    const unlisten = auth.onAuthStateChanged(contextState => {
-      const { session, dispatch } = contextState; // deconstruct the context state
+  const { session, dispatch } = contextState; // deconstruct the context state
+
+  useEffect(() => {
+    const unlisten = auth.onAuthStateChanged(session => {
       const { email, password } = session; // deconstruct the session object
       const isAuthenticated = email ? true : false;
       dispatch({
@@ -42,10 +43,12 @@ export const useSession = () => {
         session: { email, password, isAuthenticated }
       });
     });
+
     return () => {
       unlisten();
     };
   });
+
   return contextState;
 };
 

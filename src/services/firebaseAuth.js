@@ -2,7 +2,6 @@
 import firebase from "../firebase";
 
 export const signup = (email, password, setPerformingAction) => {
-  alert("Sign up with " + email + ", and password " + password);
   firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
@@ -45,9 +44,6 @@ export const signin = (email, password, setPerformingAction) => {
         alert(errorMessage);
       }
       console.log(error);
-      document.getElementById("quickstart-sign-in").disabled = false;
       // [END_EXCLUDE]
     });
 };
-
-// export default signup;
