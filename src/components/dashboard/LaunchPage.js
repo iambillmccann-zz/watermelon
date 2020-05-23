@@ -33,7 +33,7 @@ const LaunchPage = () => {
 
   return (
     <Container maxWidth="sm">
-      {session.isAuthenticated ? <Redirect to="/" n /> : null}
+      {session.email ? <Redirect to="/" n /> : null}
       <div className={classes.root}>
         <Paper elevation={3}>
           <div className={classes.content}>

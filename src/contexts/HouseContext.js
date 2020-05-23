@@ -4,6 +4,7 @@ import React, { createContext, useReducer, useContext } from "react";
 // My imports
 import { HouseReducer } from "../reducers/HouseReducer";
 
+// initial state values
 const initialState = [
   {
     id: "1",
@@ -25,7 +26,10 @@ const initialState = [
   }
 ];
 
+// create context
 export const HouseContext = createContext();
+
+// create context provider
 const HouseContextProvider = props => {
   const [houses, dispatch] = useReducer(HouseReducer, initialState);
   return (
@@ -35,6 +39,7 @@ const HouseContextProvider = props => {
   );
 };
 
+// create the custom hook
 export const useHouses = () => {
   const contextValue = useContext(HouseContext);
   return contextValue;

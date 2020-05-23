@@ -52,7 +52,7 @@ const AppHeader = () => {
         <Typography variant="h6" className={classes.title}>
           WATERMELON
         </Typography>
-        {session.isAuthenticated ? (
+        {session.email ? (
           <SignedInLinks className={classes.links} />
         ) : (
           <SignedOutLinks className={classes.links} />

@@ -1,22 +1,12 @@
 export const SessionReducer = (state, action) => {
   switch (action.type) {
-    case "SIGNIN":
+    case "UPDATE":
       return {
+        name: action.session.name,
         email: action.session.email,
-        password: action.session.pasword,
-        isAuthenticated: true
-      };
-    case "SIGNOUT":
-      return {
-        email: "",
-        password: "",
-        isAuthenticated: false
-      };
-    case "SIGNUP":
-      return {
-        email: "",
-        password: "",
-        isAuthenticated: false
+        photourl: action.session.photourl,
+        emailVerified: action.session.emailVerified,
+        uid: action.session.uid
       };
     default:
       return state;
