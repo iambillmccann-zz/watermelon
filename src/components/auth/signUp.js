@@ -11,7 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // import SimpleSnackBar from "../SimpleSnackBar";
 
 // My imports
-// import { SessionContext, useSession } from "../../contexts/SessionContext";
+import { SessionContext, useSession } from "../../contexts/SessionContext";
 import constraints from "../../constraints";
 import { signup } from "../../services/firebaseAuth";
 
@@ -28,9 +28,8 @@ const SignUp = props => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [confirmedPwd, setConfirmedPwd] = useState("");
-  const [performingAction, setPerformingAction] = useState(false);
   const [errors, setErrors] = useState();
-  // const { dispatch } = useSession(SessionContext);
+  const { session } = useSession(SessionContext);
 
   // form actions
   const handleSubmit = e => {
@@ -38,7 +37,7 @@ const SignUp = props => {
     enroll();
   };
 
-  // fireback signup function
+  // firebase signup function
   const enroll = () => {
     const results = validate(
       {
@@ -61,9 +60,7 @@ const SignUp = props => {
       setErrors(results);
     } else {
       setErrors(null);
-      signup(email, password, x => {
-        setPerformingAction(x);
-      });
+      signup(email, password);
     }
   };
 
@@ -72,14 +69,13 @@ const SignUp = props => {
 
   return (
     <Container maxWidth="sm">
-      {performingAction ? <Redirect to="/dashboard" n /> : null}
+      {session.email ? <Redirect to="/dashboard" n /> : null}
       <form onSubmit={handleSubmit}>
         <h1 className={classes.margin}>Sign Up</h1>
         <TextField
           id="firstname"
           className={classes.margin}
           autoComplete="first-name"
-          disabled={performingAction}
           error={!!(errors && errors.emailAddress)}
           fullWidth
           helperText={
@@ -95,7 +91,6 @@ const SignUp = props => {
           id="lastname"
           className={classes.margin}
           autoComplete="last-name"
-          disabled={performingAction}
           error={!!(errors && errors.emailAddress)}
           fullWidth
           helperText={
@@ -111,7 +106,6 @@ const SignUp = props => {
           id="userid"
           className={classes.margin}
           autoComplete="email"
-          disabled={performingAction}
           error={!!(errors && errors.emailAddress)}
           fullWidth
           helperText={
@@ -128,7 +122,6 @@ const SignUp = props => {
           id="password"
           className={classes.margin}
           autoComplete="current-password"
-          disabled={performingAction}
           error={!!(errors && errors.password)}
           fullWidth
           helperText={errors && errors.password ? errors.password[0] : ""}
@@ -144,7 +137,6 @@ const SignUp = props => {
           id="confirmedpwd"
           className={classes.margin}
           autoComplete="confirm-password"
-          disabled={performingAction}
           error={!!(errors && errors.password)}
           fullWidth
           helperText={errors && errors.password ? errors.password[0] : ""}

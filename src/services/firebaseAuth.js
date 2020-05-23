@@ -1,49 +1,49 @@
 // Firebase imports
 import firebase from "../firebase";
 
-export const signup = (email, password, setPerformingAction) => {
+export const signup = (email, password) => {
   firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
-    .then(() => {
-      setPerformingAction(true);
-    })
     .catch(error => {
       // Handle Errors here.
+      alert("Error during sign up " + error.message); // delete this!
       var errorCode = error.code;
       var errorMessage = error.message;
-      // [START_EXCLUDE]
-      setPerformingAction(false);
       if (errorCode === "auth/weak-password") {
         alert("The password is too weak.");
       } else {
         alert(errorMessage);
       }
       console.log(error);
-      // [END_EXCLUDE]
     });
-  // [END createwithemail]
 };
 
-export const signin = (email, password, setPerformingAction) => {
+export const signin = (email, password) => {
   firebase
     .auth()
-    .signInWithEmailAndPassword(email, password, setPerformingAction)
-    .then(() => {
-      setPerformingAction(true);
-    })
+    .signInWithEmailAndPassword(email, password)
     .catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-      // [START_EXCLUDE]
-      setPerformingAction(false);
       if (errorCode === "auth/wrong-password") {
         alert("Wrong password.");
       } else {
         alert(errorMessage);
       }
       console.log(error);
-      // [END_EXCLUDE]
+    });
+};
+
+export const signout = () => {
+  firebase
+    .auth()
+    .signOut()
+    .then(function() {
+      // Sign-out successful.
+    })
+    .catch(function(error) {
+      console.log(error);
     });
 };

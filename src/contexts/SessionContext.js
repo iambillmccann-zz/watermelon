@@ -2,17 +2,18 @@
 import React, { createContext, useReducer, useContext, useEffect } from "react";
 
 // Firebase imports
-import firebase, { auth } from "../firebase";
+import firebase from "../firebase";
 
 // My imports
 import { SessionReducer } from "../reducers/SessionReducer";
 
 // initial state values
 const initialState = {
+  name: null,
   email: null,
-  password: null,
-  isAuthenticated: false,
-  firebase: firebase
+  photourl: null,
+  emailVerified: false,
+  uid: null
 };
 
 // create the context
@@ -21,7 +22,6 @@ export const SessionContext = createContext();
 // create the context provider
 const SessionContextProvider = props => {
   const [session, dispatch] = useReducer(SessionReducer, initialState);
-  console.log("In session context provider");
   return (
     <SessionContext.Provider value={{ session, dispatch }}>
       {props.children}
@@ -32,23 +32,27 @@ const SessionContextProvider = props => {
 // create the customer
 export const useSession = () => {
   const contextState = useContext(SessionContext);
-  const { session, dispatch } = contextState; // deconstruct the context state
-
+  const { dispatch } = contextState;
   useEffect(() => {
-    const unlisten = auth.onAuthStateChanged(session => {
-      const { email, password } = session; // deconstruct the session object
-      const isAuthenticated = email ? true : false;
+    firebase.auth().onAuthStateChanged(user => {
+      var currentUser = {};
+      if (user) {
+        currentUser = {
+          name: user.displayName,
+          email: user.email,
+          photourl: user.photoURL,
+          emailVerified: user.emailVerified,
+          uid: user.uid
+        };
+      } else {
+        currentUser = initialState;
+      }
       dispatch({
         type: "UPDATE",
-        session: { email, password, isAuthenticated }
+        session: currentUser
       });
     });
-
-    return () => {
-      unlisten();
-    };
-  });
-
+  }, [dispatch]);
   return contextState;
 };
 
