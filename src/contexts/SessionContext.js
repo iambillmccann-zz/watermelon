@@ -29,7 +29,7 @@ const SessionContextProvider = props => {
   );
 };
 
-// create the customer
+// create the custom hook
 export const useSession = () => {
   const contextState = useContext(SessionContext);
   const { dispatch } = contextState;
